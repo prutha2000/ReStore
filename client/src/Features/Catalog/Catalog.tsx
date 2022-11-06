@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
+import agent from "../../App/api/agent";
 import { Product } from "../../App/Models/Product"
 import ProductList from "./ProductsList";
 
@@ -13,9 +14,7 @@ export default function Catalog() {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/products')
-        .then(response => response.json())
-        .then(data =>setProducts(data))
+        agent.Catalog.list().then(products => setProducts(products))
       }, [] )
     
     return (

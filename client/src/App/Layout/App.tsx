@@ -1,12 +1,14 @@
 import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import Catalog from "../../Features/Catalog/Catalog";
 import Header from "./Header";
-import { useState } from 'react'
+import { useState } from 'react';
 import { Route } from "react-router-dom";
 import HomePage from "../../Features/Home/HomePage";
 import ContactPage from "../../Features/Contact/ContactPage";
 import ProductDetails from "../../Features/Catalog/ProductDetails";
 import AboutPage from "../../Features/About/AboutPage";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,6 +30,7 @@ function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
+      <ToastContainer position='bottom-right' hideProgressBar />
     <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
       <Container>
