@@ -9,14 +9,14 @@ export default function Catalog() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
 
-    if(loading) return <LoadingComponent message='loading Message'></LoadingComponent>
-
     useEffect(() => {
         agent.Catalog.list()
         .then(products => setProducts(products))
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
       }, [] )
+
+      if(loading) return <LoadingComponent message='loading Message' />
     
     return (
         <>

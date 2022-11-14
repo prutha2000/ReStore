@@ -5,6 +5,7 @@ import App from './App/Layout/App';
 import reportWebVitals from './reportWebVitals';
 import {  Router } from 'react-router-dom';
 import { createBrowserHistory } from "history";
+import { StoreProvider } from './App/context/StoreContext';
 
 export const history = createBrowserHistory();
 const root = ReactDOM.createRoot(
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <Router history={history}>
+      <StoreProvider>
       <App />
+      </StoreProvider>
     </Router>
 );
 
