@@ -2,6 +2,7 @@ import { AppBar, Toolbar, Typography, Switch, List, ListItem, IconButton, Badge,
 import { ShoppingCart } from "@mui/icons-material";
 import { Link, NavLink } from "react-router-dom";
 import { useStoreContext } from "../context/StoreContext";
+import { useAppSelector } from "../store/configureStore";
 
 interface Props{
     darkMode: boolean;
@@ -34,8 +35,8 @@ const navStyles = {
 }
 
 export default function Header({darkMode, handleThemeChange}: Props){
-    const {basket} = useStoreContext();
-    const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0)
+    const {basket} = useAppSelector(state => state.basket);
+    const itemCount = basket?.items.reduce((sum: any, item: { quantity: any; }) => sum + item.quantity, 0)
 
     return(
         <AppBar position="static" sx={{mb: 4}}>
